@@ -2,11 +2,11 @@ const openPage = require('./openPage')
 const logger = require('./logger')
 
 module.exports = async (browser, email, password) => {
-  const url = 'https://www.linkedin.com/login'
-  const page = await openPage({ browser, url })
-  logger.info('login', `logging at: ${url}`)
+  const loginUrl = 'https://www.linkedin.com/login'
+  const page = await openPage(browser, undefined, loginUrl)
+  logger.info('login', `logging at: ${loginUrl}`)
 
-  await page.goto(url)
+  await page.goto(loginUrl)
   await page.waitFor('#username')
 
   await page.$('#username')

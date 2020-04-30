@@ -10,7 +10,7 @@ const agents = [
     //"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
   ];
 
-module.exports = async ({ browser, cookies, url, puppeteerAuthenticate }) => {
+module.exports = async (browser, cookies, url) => {
   const page = await browser.newPage()
 
   if(cookies) {
@@ -22,10 +22,6 @@ module.exports = async ({ browser, cookies, url, puppeteerAuthenticate }) => {
     width: 1920,
     height: 1080
   })
-
-  if(puppeteerAuthenticate) {
-    await page.authenticate(puppeteerAuthenticate)
-  }
 
   await page.goto(url)
 
