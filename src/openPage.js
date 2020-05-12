@@ -10,9 +10,11 @@ const agents = [
     //"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
   ];
 
-module.exports = async (browser, cookies, url) => {
-  const page = await browser.newPage()
-
+const getBrowser = require('./browser')
+module.exports = async (cookies, url) => {
+  const browser = await getBrowser()
+  const page = await browser.newPage();
+  
   if(cookies) {
     await page.setCookie(...cookies)
   }
